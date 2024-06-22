@@ -4,7 +4,7 @@ export interface Transactions {
   type: string;
   amount: number;
   status: string;
-  registeredAt: string;
-  createdAt: string;
+  registeredAt: Date;
+  createdAt: Date;
   userId: string;
 }
