@@ -8,9 +8,20 @@ A functional and complete system for managing financial expenses. It may be used
 
 - Install docker
 - Install docker-compose
-- Install Makefile
 
 #### 2. Steps to run this project
+
+* Copy file `.env.dist` with name `.env`
+
+   To start project use the commands
+
+    | COMMAND              | DESCRIPTION                   |
+    |----------------------|-------------------------------|
+    | yarn install         | Install all the dependencies  |
+    | docker compose up -d | Run docker for postgres db    |
+    | yarn migration:dev   | Synchronize your postgres db  |
+    | yarn dev             | Run your application          |
+
 
 ## 🛠 Skills
 
