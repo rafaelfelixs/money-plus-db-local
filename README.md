@@ -11,17 +11,16 @@ A functional and complete system for managing financial expenses. It may be used
 
 #### 2. Steps to run this project
 
-* Copy file `.env.dist` with name `.env`
+- Copy file `.env.dist` with name `.env`
 
-   To start project use the commands
+  To start project use the commands
 
-    | COMMAND              | DESCRIPTION                   |
-    |----------------------|-------------------------------|
-    | yarn install         | Install all the dependencies  |
-    | docker compose up -d | Run docker for postgres db    |
-    | yarn migration:dev   | Synchronize your postgres db  |
-    | yarn dev             | Run your application          |
-
+  | COMMAND              | DESCRIPTION                  |
+  | -------------------- | ---------------------------- |
+  | yarn install         | Install all the dependencies |
+  | docker compose up -d | Run docker for postgres db   |
+  | yarn migration:dev   | Synchronize your postgres db |
+  | yarn dev             | Run your application         |
 
 ## 🛠 Skills
 
