@@ -8,7 +8,7 @@ export class UserCreateController {
   public async handle(req: Request, res: Response, next: NextFunction): Promise<void> {
     try {
       const { userName, email, password } = req.body;
-      const user = UserCreateHelper.validateRequest({ userName, email, password });
+      const user = await UserCreateHelper.validateRequest({ userName, email, password });
       const userNew = await this.service.invoke(user);
       res.status(200).send(userNew);
     } catch (error) {

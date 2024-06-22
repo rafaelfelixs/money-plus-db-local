@@ -6,9 +6,9 @@ import { CODE_ERROR_FIELDS_INVALID } from '../../../Api/Exception/CodeErrors/Cod
 import { randomUUID } from 'node:crypto';
 
 export default class UserCreateHelper {
-  public static validateRequest(request: UserCreateRequest): Users {
+  public static async validateRequest(request: UserCreateRequest): Promise<Users> {
     // check if the mandatory fields exists
-    if (request.userName || request.email) {
+    if (!request.userName || !request.email) {
       loggerError('Mandatory fields userName or email');
       throw new BadRequestException(CODE_ERROR_FIELDS_INVALID);
     }
@@ -21,8 +21,8 @@ export default class UserCreateHelper {
     }
 
     // check if the email is valid
-    const regexValidEmail = new RegExp("/[a-zA-Z0-9.!#$%&'*+\\/=?^_`{|}~-]+@[a-zA-Z0-9](?:[a-zA-Z0-9-]{0,61}[a-zA-Z0-9])?(?:\\.[a-zA-Z0-9](?:[a-zA-Z0-9-]{0,61}[a-zA-Z0-9])?)*/");
-    if (!request.userName.match(regexValidEmail)) {
+    const regexValidEmail = new RegExp('^[\\w-\\.]+@([\\w-]+\\.)+[\\w-]{2,4}$');
+    if (!request.email.match(regexValidEmail)) {
       loggerError('Email field is not valid');
       throw new BadRequestException(CODE_ERROR_FIELDS_INVALID);
     }
@@ -32,7 +32,7 @@ export default class UserCreateHelper {
       userName: request.userName,
       email: request.email,
       password: null,
-      createdAt: null,
+      createdAt: new Date(),
       transactions: [],
     };
   }
