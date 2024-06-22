@@ -1,5 +1,0 @@
-export interface IApiValidator<T, R> {
-  fromApi(object: any | any[], headers?: any): Promise<T | T[]>;
-
-  toApi(dto: T | T[]): Promise<R | R[]>;
-}
