@@ -36,8 +36,7 @@ export class ConnectServer {
   }
 
   private registerRouter(): void {
-    this.application.app.use('/api', router);
-    this.application.app.use('/api', routerUsers);
+    this.application.app.use('/api', router, routerUsers);
     this.application.app.get('/api/is-alive', (req: Request, res: Response) => {
       return HEALTH_CHECK_ENABLE ? res.status(200).send('OK') : res.status(503).send('Service Unavailable');
     });

@@ -13,8 +13,8 @@ export class App {
   public app: express.Application;
 
   private applyMiddleware(): void {
-    this.app.use(express.json({ limit: '20mb' }));
-    this.app.use(express.urlencoded({ limit: '20mb', extended: true }));
+    this.app.use(express.json())
+    this.app.use(express.urlencoded({ extended: true }))
     this.app.use(cors());
     this.app.use(helmet());
     this.app.use(compression());
