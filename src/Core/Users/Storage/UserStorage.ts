@@ -37,11 +37,11 @@ export class UserStorage implements IUserStorage {
     }
   }
 
-  public async findByEmail(userId: string): Promise<any> {
+  public async findByEmail(email: string): Promise<any> {
     try {
       return await prisma.user.findUnique({
         where: {
-          id: userId,
+          email: email,
         },
       });
     } catch (e) {
