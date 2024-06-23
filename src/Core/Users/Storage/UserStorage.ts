@@ -67,11 +67,11 @@ export class UserStorage implements IUserStorage {
   }
 
   public async update(user: Users): Promise<any> {
-    const { userName, email, password } = user;
+    const { userId, userName, password } = user;
     try {
       return await prisma.user.update({
         where: {
-          email: email,
+          id: userId,
         },
         data: {
           userName: userName,
