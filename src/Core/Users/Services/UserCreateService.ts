@@ -17,6 +17,7 @@ export class UserCreateService {
 
     const userNew = await this.storage.save(user);
     logger.info('User created successfully.');
+    console.log(userNew)
     return userNew;
   }
 }
