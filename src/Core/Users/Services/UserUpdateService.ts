@@ -8,7 +8,10 @@ export class UserUpdateService {
   constructor(private readonly storage: IUserStorage) {}
 
   public async invoke(userId: string, user: Users): Promise<any> {
-    const userFound = await this.storage.findById(userId);
+    const users = await this.storage.findAll();
+
+    const userFound = users.find((usr) => usr.id === userId);
+
     if (!userFound) {
       logger.info('User not found');
       throw new ResourceNotFoundException(CODE_ERROR_RESOURCE_NOT_FOUND.message);
