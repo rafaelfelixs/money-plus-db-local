@@ -14,7 +14,7 @@ export default class UserCreateHelper {
       throw new BadRequestException(CODE_ERROR_FIELDS_INVALID);
     }
 
-    // check if the user name is valid
+    // check if the username is valid
     const regexValidName = new RegExp('[A-Za-z]');
     if (!request.userName.match(regexValidName)) {
       loggerError('Name field is not valid');
@@ -32,7 +32,7 @@ export default class UserCreateHelper {
       userId: randomUUID(),
       userName: request.userName,
       email: request.email,
-      password: null,
+      password: request.password || null,
       createdAt: new Date(),
       transactions: [],
     };
