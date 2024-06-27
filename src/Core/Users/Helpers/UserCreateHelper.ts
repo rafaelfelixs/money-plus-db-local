@@ -4,6 +4,7 @@ import { loggerError } from '../../../Api/Utils/Logger';
 import { BadRequestException } from '../../../Api/Exception/BadRequestException';
 import { CODE_ERROR_FIELDS_INVALID } from '../../../Api/Exception/CodeErrors/CodeErrors';
 import { randomUUID } from 'node:crypto';
+import { UserCreateResponse } from '../Response/UserCreateResponse';
 
 export default class UserCreateHelper {
   public static async validateRequest(request: UserCreateRequest): Promise<Users> {
@@ -34,6 +35,16 @@ export default class UserCreateHelper {
       password: null,
       createdAt: new Date(),
       transactions: [],
+    };
+  }
+
+  public static async buildResponse(user: Users): Promise<UserCreateResponse> {
+    return {
+      userId: user.userId,
+      userName: user.userName,
+      email: user.email,
+      createdAt: user.createdAt,
+      transactions: user.transactions || [],
     };
   }
 }
