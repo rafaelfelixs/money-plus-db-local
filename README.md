@@ -15,12 +15,12 @@ A functional and complete system for managing financial expenses. It may be used
 
   To start project use the commands
 
-  | COMMAND              | DESCRIPTION                  |
-  | -------------------- | ---------------------------- |
-  | yarn install         | Install all the dependencies |
-  | docker compose up -d | Run docker for postgres db   |
-  | yarn migration:dev   | Synchronize your postgres db |
-  | yarn dev             | Run your application         |
+  | COMMAND                            | DESCRIPTION                  |
+  | ---------------------------------- | ---------------------------- |
+  | yarn install                       | Install all the dependencies |
+  | docker compose up -d               | Run docker for postgres db   |
+  | npx prisma migrate dev --name init | Synchronize your postgres db |
+  | yarn dev                           | Run your application         |
 
 ## 🛠 Skills
 
