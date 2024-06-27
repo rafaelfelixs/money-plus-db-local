@@ -1,5 +1,5 @@
-import express, { NextFunction, Request, Response } from 'express';
-import {userCreateController, userListController} from './index';
+import express, { NextFunction, Request, Response } from 'express'; 
+import { userCreateController, userListController, userGetByIdController, userDeleteController} from './index';
 
 const routerUsers = express.Router();
 
@@ -8,11 +8,18 @@ routerUsers.post('/v1/users', (req: Request, res: Response, next: NextFunction) 
 });
 
 routerUsers.get('/v1/users', (req: Request, res: Response, next: NextFunction) => {
-    return userListController.handle(req, res, next)
-})
+    return userListController.handle(req, res, next);
+});
+
 
 routerUsers.get('/v1/users/:userId', (req: Request, res: Response, next: NextFunction) => {
-    return userListController.handle(req, res, next)
-})
+    return userGetByIdController.handle(req, res, next);
+});
+
+routerUsers.delete('/v1/users/:userId', (req: Request, res: Response, next: NextFunction) => {
+    return userDeleteController.handle(req, res, next);
+});
 
 export { routerUsers };
+
+

@@ -1,4 +1,4 @@
-import { IUserStorage } from './IUserStorage';
+ import { IUserStorage } from './IUserStorage';
 
 import { prisma } from '../../Database/Prisma/PrismaConnection';
 import { loggerError } from '../../../Api/Utils/Logger';
