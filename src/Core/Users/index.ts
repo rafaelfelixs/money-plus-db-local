@@ -1,8 +1,8 @@
 import { UserCreateController } from './Actions/UserCreateController';
 import { UserCreateService } from './Services/UserCreateService';
 import { UserStorage } from './Storage/UserStorage';
-import {UserListController} from "./Actions/UserListController";
-import {UserListService} from "./Services/UserListService";
+import { UserListController } from './Actions/UserListController';
+import { UserListService } from './Services/UserListService';
 
 export const userStorage = new UserStorage();
 
