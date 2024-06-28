@@ -1,7 +1,7 @@
 export interface IStorage<T> {
   save(entity: T): Promise<T>;
 
-  update(entity: T): Promise<T>;
+  update(id: string | number, entity: T): Promise<T>;
 
   delete(id: string | number): Promise<void>;
 

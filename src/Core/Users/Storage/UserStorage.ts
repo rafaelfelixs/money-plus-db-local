@@ -66,8 +66,8 @@ export class UserStorage implements IUserStorage {
     }
   }
 
-  public async update(user: Users): Promise<any> {
-    const { userId, userName, password } = user;
+  public async update(userId: string, user: Users): Promise<any> {
+    const { userName, password } = user;
     try {
       return await prisma.user.update({
         where: {
