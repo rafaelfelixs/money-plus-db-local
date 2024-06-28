@@ -2,7 +2,6 @@ import { CODE_ERROR_RESOURCE_NOT_FOUND } from '../../../Api/Exception/CodeErrors
 import { ResourceNotFoundException } from '../../../Api/Exception/ResourceNotFoundException';
 import { logger } from '../../../Api/Utils/Logger';
 import { Users } from '../../../Infraestructure/Entities/Users';
-//import { IUserStorage } from '../Storage/IUserStorage';
 import { UserStorage } from '../Storage/UserStorage';
 
 export class UserUpdateService {
