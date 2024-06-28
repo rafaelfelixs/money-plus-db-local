@@ -11,10 +11,6 @@ routerUsers.get('/v1/users', (req: Request, res: Response, next: NextFunction) =
   return userListController.handle(req, res, next);
 });
 
-routerUsers.get('/v1/users/:userId', (req: Request, res: Response, next: NextFunction) => {
-  return userListController.handle(req, res, next);
-});
-
 routerUsers.put('/v1/user/:id', (req: Request, res: Response, next: NextFunction) => {
   return userUpdateController.handle(req, res, next);
 });

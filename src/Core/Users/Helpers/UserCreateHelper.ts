@@ -4,6 +4,7 @@ import { loggerError } from '../../../Api/Utils/Logger';
 import { BadRequestException } from '../../../Api/Exception/BadRequestException';
 import { CODE_ERROR_FIELDS_INVALID } from '../../../Api/Exception/CodeErrors/CodeErrors';
 import { randomUUID } from 'node:crypto';
+import { UserCreateResponse } from '../Response/UserCreateResponse';
 
 export default class UserCreateHelper {
   public static async validateRequest(request: UserCreateRequest): Promise<Users> {
@@ -13,7 +14,7 @@ export default class UserCreateHelper {
       throw new BadRequestException(CODE_ERROR_FIELDS_INVALID);
     }
 
-    // check if the user name is valid
+    // check if the username is valid
     const regexValidName = new RegExp('[A-Za-z]');
     if (!request.userName.match(regexValidName)) {
       loggerError('Name field is not valid');
@@ -31,9 +32,19 @@ export default class UserCreateHelper {
       userId: randomUUID(),
       userName: request.userName,
       email: request.email,
-      password: null,
+      password: request.password || null,
       createdAt: new Date(),
       transactions: [],
+    };
+  }
+
+  public static async buildResponse(user: Users): Promise<UserCreateResponse> {
+    return {
+      userId: user.userId,
+      userName: user.userName,
+      email: user.email,
+      createdAt: user.createdAt,
+      transactions: user.transactions || [],
     };
   }
 }
