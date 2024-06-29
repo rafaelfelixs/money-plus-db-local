@@ -1,6 +1,8 @@
 import { NextFunction, Request, Response } from 'express';
 
 import { UserUpdateService } from '../Services/UserUpdateService';
+import UserUpdateHelper from '../Helpers/UserUpdateHelper';
+import { Users } from '../../../Infraestructure/Entities/Users';
 
 export class UserUpdateController {
   constructor(private readonly service: UserUpdateService) {}
@@ -8,10 +10,10 @@ export class UserUpdateController {
   public async handle(req: Request, res: Response, next: NextFunction): Promise<void> {
     try {
       const { id } = req.params;
-      const userName = req.body;
+      const userName: Users = req.body;
 
-      //TODO: Adicionar validação
-      const updatedUser = await this.service.invoke(id, userName);
+      const user = await UserUpdateHelper.validateRequest(userName);
+      const updatedUser = await this.service.invoke(id, user);
 
       res.status(200).send(updatedUser);
     } catch (error) {
