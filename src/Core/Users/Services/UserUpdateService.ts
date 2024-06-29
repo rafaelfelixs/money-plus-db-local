@@ -2,15 +2,14 @@ import { CODE_ERROR_RESOURCE_NOT_FOUND } from '../../../Api/Exception/CodeErrors
 import { ResourceNotFoundException } from '../../../Api/Exception/ResourceNotFoundException';
 import { logger } from '../../../Api/Utils/Logger';
 import { Users } from '../../../Infraestructure/Entities/Users';
-import { IUserStorage } from '../Storage/IUserStorage';
+//import { IUserStorage } from '../Storage/IUserStorage';
+import { UserStorage } from '../Storage/UserStorage';
 
 export class UserUpdateService {
-  constructor(private readonly storage: IUserStorage) {}
+  constructor(private readonly storage: UserStorage) {}
 
   public async invoke(userId: string, user: Users): Promise<any> {
-    const users = await this.storage.findAll();
-
-    const userFound = users.find((usr) => usr.id === userId);
+    const userFound = await this.storage.findById(userId);
 
     if (!userFound) {
       logger.info('User not found');
