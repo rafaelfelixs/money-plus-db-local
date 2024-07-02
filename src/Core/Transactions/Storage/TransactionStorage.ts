@@ -65,7 +65,7 @@ export class TransactionStorage implements ITransactionStorage {
   }
 
   public async update(transaction: Transactions): Promise<any> {
-    const { transactionId, description, amount, status, type, registeredAt, createdAt, userId } = transaction;
+    const { transactionId, description, amount, status, type, registeredAt } = transaction;
     try {
       return await prisma.transactions.update({
         where: {
