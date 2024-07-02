@@ -1,3 +1,5 @@
+import {Users} from "./Users";
+
 export interface Transactions {
   transactionId: string;
   description: string;
@@ -7,4 +9,5 @@ export interface Transactions {
   registeredAt: Date;
   createdAt: Date;
   userId: string;
+  User?: Users;
 }
