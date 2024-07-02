@@ -5,8 +5,8 @@ import { CreateTransactionRequest } from '../Request/CreateTransactionRequest';
 import { Transactions } from '../../../Infraestructure/Entities/Transactions';
 import { TypeTransactionEnum } from '../Enum/TypeTransactionEnum';
 import { StatusTransactionEnum } from '../Enum/StatusTransactionEnum';
-import {randomUUID} from "node:crypto";
-import {CreateTransactionResponse} from "../Response/CreateTransactionResponse";
+import { randomUUID } from 'node:crypto';
+import { CreateTransactionResponse } from '../Response/CreateTransactionResponse';
 
 export default class TransactionCreateHelper {
   public static async validateRequest(request: CreateTransactionRequest): Promise<Transactions> {
@@ -58,22 +58,21 @@ export default class TransactionCreateHelper {
     return status === StatusTransactionEnum.done ? new Date() : null;
   }
 
-    public static buildResponse(transaction: Transactions): CreateTransactionResponse {
-
-        return {
-            transactionId: transaction.transactionId,
-            description: transaction.description,
-            type: transaction.type,
-            amount: transaction.amount,
-            status: transaction.status,
-            createdAt: String(transaction.createdAt),
-            registeredAt: String(transaction.registeredAt),
-            User: {
-                userId: transaction.userId,
-                userName: transaction.User.userName,
-                email: transaction.User.email,
-                createdAt: String(transaction.User.createdAt)
-            },
-        }
-    }
+  public static buildResponse(transaction: Transactions): CreateTransactionResponse {
+    return {
+      transactionId: transaction.transactionId,
+      description: transaction.description,
+      type: transaction.type,
+      amount: transaction.amount,
+      status: transaction.status,
+      createdAt: String(transaction.createdAt),
+      registeredAt: String(transaction.registeredAt),
+      User: {
+        userId: transaction.userId,
+        userName: transaction.User.userName,
+        email: transaction.User.email,
+        createdAt: String(transaction.User.createdAt),
+      },
+    };
+  }
 }

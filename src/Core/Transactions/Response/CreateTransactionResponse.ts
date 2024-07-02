@@ -1,4 +1,4 @@
-import {UserCreateResponse} from "../../Users/Response/UserCreateResponse";
+import { UserCreateResponse } from '../../Users/Response/UserCreateResponse';
 
 export interface CreateTransactionResponse {
   transactionId: string;

@@ -3,7 +3,6 @@ import { ITransactionStorage } from './ITransactionStorage';
 import { prisma } from '../../Database/Prisma/PrismaConnection';
 import { loggerError } from '../../../Api/Utils/Logger';
 import { Transactions } from '../../../Infraestructure/Entities/Transactions';
-import { User } from '@prisma/client';
 
 export class TransactionStorage implements ITransactionStorage {
   public async delete(transactionId: string): Promise<void> {
@@ -51,14 +50,14 @@ export class TransactionStorage implements ITransactionStorage {
           registeredAt,
           createdAt,
           User: {
-              connect: {
-                  id: userId,
-              },
+            connect: {
+              id: userId,
+            },
           },
         },
-          include: {
-            User: true,
-          },
+        include: {
+          User: true,
+        },
       });
     } catch (e) {
       loggerError(e);
