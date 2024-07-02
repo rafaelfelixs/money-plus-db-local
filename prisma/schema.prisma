@@ -1,16 +1,29 @@
 datasource db {
-  provider = "postgresql"
-  url      = env("DATABASE_URL")
+    provider = "postgresql"
+    url      = env("DATABASE_URL")
 }
 
 generator client {
-  provider = "prisma-client-js"
+    provider = "prisma-client-js"
 }
 
-model user {
-  id        String   @id
-  userName  String
-  email     String?  @unique
-  password  String?
-  createdAt DateTime
+model User {
+    id           String         @id
+    userName     String
+    email        String?        @unique
+    password     String?
+    createdAt    DateTime
+    Transactions Transactions[]
+}
+
+model Transactions {
+    id           String    @id
+    description  String
+    type         String
+    amount       Float
+    status       String
+    registeredAt DateTime?
+    createdAt    DateTime
+    User         User      @relation(fields: [userId], references: [id])
+    userId       String
 }
