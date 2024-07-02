@@ -7,6 +7,7 @@ import { logger, loggerError, loggerErrorUncaughtException } from './Api/Utils/L
 import { routerUsers } from './Core/Users/Routes';
 import { RouteNotFoundException } from './Api/Exception/RouteNotFoundException';
 import { errorMiddleware } from './Api/Middleware/ErrorMiddleware';
+import { routerTransactions } from './Core/Transactions/Routes';
 
 dotenv.config();
 
@@ -38,7 +39,7 @@ export class ConnectServer {
   }
 
   private registerRouter(): void {
-    this.application.app.use('/api', router, routerUsers);
+    this.application.app.use('/api', router, routerUsers, routerTransactions);
     this.application.app.get('/api/is-alive', (req: Request, res: Response) => {
       return HEALTH_CHECK_ENABLE ? res.status(200).send('OK') : res.status(503).send('Service Unavailable');
     });
