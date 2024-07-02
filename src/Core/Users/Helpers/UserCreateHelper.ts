@@ -43,7 +43,7 @@ export default class UserCreateHelper {
       userId: user.userId,
       userName: user.userName,
       email: user.email,
-      createdAt: user.createdAt,
+      createdAt: String(user.createdAt),
       transactions: user.transactions || [],
     };
   }

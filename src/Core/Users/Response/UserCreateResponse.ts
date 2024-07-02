@@ -4,6 +4,6 @@ export interface UserCreateResponse {
   userId: string;
   userName: string;
   email: string;
-  createdAt: Date;
+  createdAt: string;
   transactions?: Array<Transactions>;
 }
