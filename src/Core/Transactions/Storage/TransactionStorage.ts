@@ -3,6 +3,7 @@ import { ITransactionStorage } from './ITransactionStorage';
 import { prisma } from '../../Database/Prisma/PrismaConnection';
 import { loggerError } from '../../../Api/Utils/Logger';
 import { Transactions } from '../../../Infraestructure/Entities/Transactions';
+import { TransactionListQueryDto } from '../Dto/TransactionListQueryDto';
 
 export class TransactionStorage implements ITransactionStorage {
   public async delete(transactionId: string): Promise<void> {
@@ -19,7 +20,7 @@ export class TransactionStorage implements ITransactionStorage {
 
   public async findAll(): Promise<any[]> {
     try {
-      return await prisma.transactions.findMany();
+      return await prisma.transactions.findMany({ include: { User: true } });
     } catch (e) {
       loggerError(e);
     }
@@ -30,6 +31,23 @@ export class TransactionStorage implements ITransactionStorage {
       return await prisma.transactions.findUnique({
         where: {
           id: transactionId,
+        },
+      });
+    } catch (e) {
+      loggerError(e);
+    }
+  }
+
+  public async findAllByFilter(queryDto: TransactionListQueryDto): Promise<any> {
+    try {
+      return await prisma.transactions.findMany({
+        where: {
+          userId: queryDto?.userId,
+          type: queryDto?.type,
+          status: queryDto?.status,
+        },
+        include: {
+          User: true,
         },
       });
     } catch (e) {
