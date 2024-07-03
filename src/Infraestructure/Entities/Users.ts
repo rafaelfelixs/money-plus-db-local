@@ -1,7 +1,8 @@
 import { Transactions } from './Transactions';
 
 export interface Users {
-  userId: string;
+  id?: string;
+  userId?: string;
   userName: string;
   email: string;
   password?: string;
