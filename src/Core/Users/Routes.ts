@@ -11,11 +11,11 @@ routerUsers.get('/v1/users', (req: Request, res: Response, next: NextFunction) =
   return userListController.handle(req, res, next);
 });
 
-routerUsers.put('/v1/user/:id', (req: Request, res: Response, next: NextFunction) => {
+routerUsers.put('/v1/users/:id', (req: Request, res: Response, next: NextFunction) => {
   return userUpdateController.handle(req, res, next);
 });
 
-routerUsers.get('/v1/user/:userId', (req: Request, res: Response, next: NextFunction) => {
+routerUsers.get('/v1/users/:userId', (req: Request, res: Response, next: NextFunction) => {
   return userGetByIdController.handle(req, res, next);
 });
 
