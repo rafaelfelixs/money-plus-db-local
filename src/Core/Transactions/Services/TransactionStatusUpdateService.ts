@@ -4,7 +4,7 @@ import { ResourceNotFoundException } from '../../../Api/Exception/ResourceNotFou
 
 export class TransactionStatusUpdateService {
   constructor(
-    private readonly storageUser: IUserStorage,
+    
     private readonly storageTransaction: ITransactionStorage
   ) {}
 

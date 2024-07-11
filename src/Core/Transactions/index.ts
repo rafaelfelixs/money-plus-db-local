@@ -14,5 +14,5 @@ export const userStorage = new UserStorage();
 export const transactionStorage = new TransactionStorage();
 
 export const transactionCreateController: TransactionCreateController = new TransactionCreateController(new TransactionCreateService(userStorage, transactionStorage));
-export const transactionStatusUpdateController: TransactionStatusUpdateController = new TransactionStatusUpdateController(new TransactionStatusUpdateService(userStorage, transactionStorage)); 
-export const transactionDeleteController: TransactionDeleteController = new TransactionDeleteController(new TransactionDeleteService(userStorage, transactionStorage)); 
+export const transactionStatusUpdateController: TransactionStatusUpdateController = new TransactionStatusUpdateController(new TransactionStatusUpdateService( transactionStorage)); 
+export const transactionDeleteController: TransactionDeleteController = new TransactionDeleteController(new TransactionDeleteService( transactionStorage)); 
