@@ -1,7 +1,8 @@
 import { Users } from './Users';
 
 export interface Transactions {
-  transactionId: string;
+  id?: string;
+  transactionId?: string;
   description: string;
   type: string;
   amount: number;

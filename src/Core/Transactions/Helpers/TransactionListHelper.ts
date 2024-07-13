@@ -5,6 +5,7 @@ import { TypeTransactionEnum } from '../Enum/TypeTransactionEnum';
 import { StatusTransactionEnum } from '../Enum/StatusTransactionEnum';
 import { Transactions } from '../../../Infraestructure/Entities/Transactions';
 import { ListTransactionResponse } from '../Response/ListTransactionResponse';
+import {UserTransactionResponse} from "../Response/UserTransactionResponse";
 
 export default class TransactionListHelper {
   public static async validateQuery(type, status, userId): Promise<void> {
@@ -36,25 +37,46 @@ export default class TransactionListHelper {
       };
     }
 
-    return {
-      count: transactions.length,
-      items: transactions.map((item) => {
-        return {
-          transactionId: item.transactionId,
-          description: item.description,
-          type: item.type,
-          amount: item.amount,
-          status: item.status,
-          createdAt: String(item.createdAt),
-          registeredAt: String(item.registeredAt),
-          User: {
-            id: item.User.id,
-            userName: item.User.userName,
-            email: item.User.email,
-            createdAt: String(item.User.createdAt),
-          },
-        };
-      }),
+    let listResponse: ListTransactionResponse = {
+        count: transactions.length,
+        items: [],
     };
+
+    console.log(transactions);
+    transactions.map((transaction) => {
+        const foundUser = listResponse.items.findIndex(item => item.user.userId === transaction.User.id)
+        console.log('INDEX USER: ', foundUser)
+        if (foundUser !== -1) {
+            listResponse.items[foundUser].transactions.push({
+                transactionId: transaction.id,
+                description: transaction.description,
+                type: transaction.type,
+                amount: transaction.amount,
+                status: transaction.status,
+                createdAt: String(transaction.createdAt),
+                registeredAt: String(transaction.registeredAt),
+            });
+        } else {
+            listResponse.items.push({
+                user: {
+                    userId: transaction.User.id,
+                    userName: transaction.User.userName,
+                    email: transaction.User.email,
+                    createdAt: String(transaction.User.createdAt)
+                },
+                transactions: [{
+                    transactionId: transaction.id,
+                    description: transaction.description,
+                    type: transaction.type,
+                    amount: transaction.amount,
+                    status: transaction.status,
+                    createdAt: String(transaction.createdAt),
+                    registeredAt: String(transaction.registeredAt),
+                }]
+            });
+        }
+    });
+
+    return listResponse;
   }
 }
