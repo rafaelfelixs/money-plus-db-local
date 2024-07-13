@@ -8,5 +8,5 @@ export interface CreateTransactionResponse {
   status: string;
   registeredAt: string;
   createdAt: string;
-  User: UserCreateResponse;
+  User?: UserCreateResponse;
 }
