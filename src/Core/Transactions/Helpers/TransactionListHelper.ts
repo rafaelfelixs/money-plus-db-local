@@ -41,10 +41,8 @@ export default class TransactionListHelper {
       items: [],
     };
 
-    console.log(transactions);
     transactions.map((transaction) => {
       const foundUser = listResponse.items.findIndex((item) => item.user.userId === transaction.User.id);
-      console.log('INDEX USER: ', foundUser);
       if (foundUser !== -1) {
         listResponse.items[foundUser].transactions.push({
           transactionId: transaction.id,
