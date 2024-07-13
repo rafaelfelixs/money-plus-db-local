@@ -5,7 +5,6 @@ import { TypeTransactionEnum } from '../Enum/TypeTransactionEnum';
 import { StatusTransactionEnum } from '../Enum/StatusTransactionEnum';
 import { Transactions } from '../../../Infraestructure/Entities/Transactions';
 import { ListTransactionResponse } from '../Response/ListTransactionResponse';
-import {UserTransactionResponse} from "../Response/UserTransactionResponse";
 
 export default class TransactionListHelper {
   public static async validateQuery(type, status, userId): Promise<void> {
@@ -37,44 +36,46 @@ export default class TransactionListHelper {
       };
     }
 
-    let listResponse: ListTransactionResponse = {
-        count: transactions.length,
-        items: [],
+    const listResponse: ListTransactionResponse = {
+      count: transactions.length,
+      items: [],
     };
 
     console.log(transactions);
     transactions.map((transaction) => {
-        const foundUser = listResponse.items.findIndex(item => item.user.userId === transaction.User.id)
-        console.log('INDEX USER: ', foundUser)
-        if (foundUser !== -1) {
-            listResponse.items[foundUser].transactions.push({
-                transactionId: transaction.id,
-                description: transaction.description,
-                type: transaction.type,
-                amount: transaction.amount,
-                status: transaction.status,
-                createdAt: String(transaction.createdAt),
-                registeredAt: String(transaction.registeredAt),
-            });
-        } else {
-            listResponse.items.push({
-                user: {
-                    userId: transaction.User.id,
-                    userName: transaction.User.userName,
-                    email: transaction.User.email,
-                    createdAt: String(transaction.User.createdAt)
-                },
-                transactions: [{
-                    transactionId: transaction.id,
-                    description: transaction.description,
-                    type: transaction.type,
-                    amount: transaction.amount,
-                    status: transaction.status,
-                    createdAt: String(transaction.createdAt),
-                    registeredAt: String(transaction.registeredAt),
-                }]
-            });
-        }
+      const foundUser = listResponse.items.findIndex((item) => item.user.userId === transaction.User.id);
+      console.log('INDEX USER: ', foundUser);
+      if (foundUser !== -1) {
+        listResponse.items[foundUser].transactions.push({
+          transactionId: transaction.id,
+          description: transaction.description,
+          type: transaction.type,
+          amount: transaction.amount,
+          status: transaction.status,
+          createdAt: String(transaction.createdAt),
+          registeredAt: String(transaction.registeredAt),
+        });
+      } else {
+        listResponse.items.push({
+          user: {
+            userId: transaction.User.id,
+            userName: transaction.User.userName,
+            email: transaction.User.email,
+            createdAt: String(transaction.User.createdAt),
+          },
+          transactions: [
+            {
+              transactionId: transaction.id,
+              description: transaction.description,
+              type: transaction.type,
+              amount: transaction.amount,
+              status: transaction.status,
+              createdAt: String(transaction.createdAt),
+              registeredAt: String(transaction.registeredAt),
+            },
+          ],
+        });
+      }
     });
 
     return listResponse;

@@ -1,5 +1,4 @@
-import { CreateTransactionResponse } from './CreateTransactionResponse';
-import {UserTransactionResponse} from "./UserTransactionResponse";
+import { UserTransactionResponse } from './UserTransactionResponse';
 
 export interface ListTransactionResponse {
   count: number;
