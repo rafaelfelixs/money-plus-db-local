@@ -5,6 +5,10 @@ import { UserListController } from './Actions/UserListController';
 import { UserListService } from './Services/UserListService';
 import { UserUpdateController } from './Actions/UserUpdateController';
 import { UserUpdateService } from './Services/UserUpdateService';
+import { UserGetByIdController } from './Actions/UserGetByIdController';
+import { UserGetByIdService } from './Services/UserGetByIdService';
+import { UserDeleteController } from './Actions/UserDeleteController';
+import { UserDeleteService } from './Services/UserDeleteService';
 
 export const userStorage = new UserStorage();
 
@@ -13,3 +17,8 @@ export const userCreateController: UserCreateController = new UserCreateControll
 export const userListController: UserListController = new UserListController(new UserListService(userStorage));
 
 export const userUpdateController: UserUpdateController = new UserUpdateController(new UserUpdateService(userStorage));
+
+export const userGetByIdController: UserGetByIdController = new UserGetByIdController(new UserGetByIdService(userStorage));
+
+export const userDeleteController : UserDeleteController  = new UserDeleteController (new UserDeleteService(userStorage));
+

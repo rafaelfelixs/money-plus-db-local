@@ -1,6 +1,7 @@
 import { Users } from './Users';
 
 export interface Transactions {
+  id(arg0: string, id: any): unknown;
   transactionId: string;
   description: string;
   type: string;
