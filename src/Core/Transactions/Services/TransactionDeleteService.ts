@@ -5,19 +5,16 @@ import { Transactions } from '../../../Infraestructure/Entities/Transactions';
 
 export class TransactionDeleteService {
   constructor(
-    
+
     private readonly storageTransaction: ITransactionStorage
   ) {}
 
-  public async invoke(transaction:Transactions): Promise<void> {
-   const teste = await this.storageTransaction.findAll()
-    console.log("#######################################", teste )
-    const transactionFound = await this.storageTransaction.findById(transaction.transactionId);
+  public async invoke(transactionId: string): Promise<void> {
+    const transactionFound = await this.storageTransaction.findById(transactionId);
     if (!transactionFound) {
       throw new ResourceNotFoundException('Transaction not found');
     }
 
-    
-     return await this.storageTransaction.delete(transaction.transactionId);
+     return await this.storageTransaction.delete(transactionId);
   }
 }
