@@ -5,7 +5,7 @@ import { TransactionCreateService } from './Services/TransactionCreateService';
 import { TransactionByIdController } from './Actions/TransactionByIdController';
 import { TransactionByIdService } from './Services/TransactionByIdService ';
 import { TransactionUpdateController } from './Actions/TransactionUpdateController';
-import { TransactionUpdateService } from './Services/TransactionUpdateervice';
+import { TransactionUpdateService } from './Services/TransactionUpdateService';
 import { TransactionListController } from './Actions/TransactionListController';
 import { TransactionListService } from './Services/TransactionListService';
 import { TransactionStatusUpdateController } from './Actions/TransactionStatusUpdateController';

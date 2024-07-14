@@ -1,5 +1,5 @@
 import { NextFunction, Request, Response } from 'express';
-import { TransactionUpdateService } from '../Services/TransactionUpdateervice';
+import { TransactionUpdateService } from '../Services/TransactionUpdateService';
 import TransactionUpdateHelper from '../Helpers/TransactionUpdateHelper';
 
 export class TransactionUpdateController {
@@ -12,7 +12,7 @@ export class TransactionUpdateController {
       const transaction = await TransactionUpdateHelper.validateRequest({ description, type, amount, status });
       await this.service.invoke(id, transaction);
 
-      res.status(200).send(transaction);
+      res.status(200).send('Transaction updated successfully');
     } catch (error) {
       next(error);
     }
