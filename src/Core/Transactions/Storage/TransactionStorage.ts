@@ -3,6 +3,7 @@ import { ITransactionStorage } from './ITransactionStorage';
 import { prisma } from '../../Database/Prisma/PrismaConnection';
 import { loggerError } from '../../../Api/Utils/Logger';
 import { Transactions } from '../../../Infraestructure/Entities/Transactions';
+import { StatusTransactionEnum } from '../Enum/StatusTransactionEnum';
 import { TransactionListQueryDto } from '../Dto/TransactionListQueryDto';
 
 export class TransactionStorage implements ITransactionStorage {
@@ -102,7 +103,7 @@ export class TransactionStorage implements ITransactionStorage {
     }
   }
 
-  public async updateStatus(transactionId, status): Promise<any> {
+  public async updateStatus(transactionId: string, status: StatusTransactionEnum): Promise<any> {
     try {
       return await prisma.transactions.update({
         where: {
