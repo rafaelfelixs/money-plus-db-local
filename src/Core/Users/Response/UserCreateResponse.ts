@@ -1,5 +1,3 @@
-import { Transactions } from '../../../Infraestructure/Entities/Transactions';
-
 export interface UserCreateResponse {
   id?: string;
   userId?: string;

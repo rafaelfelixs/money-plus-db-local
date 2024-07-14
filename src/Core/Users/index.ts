@@ -20,5 +20,4 @@ export const userUpdateController: UserUpdateController = new UserUpdateControll
 
 export const userGetByIdController: UserGetByIdController = new UserGetByIdController(new UserGetByIdService(userStorage));
 
-export const userDeleteController : UserDeleteController  = new UserDeleteController (new UserDeleteService(userStorage));
-
+export const userDeleteController: UserDeleteController = new UserDeleteController(new UserDeleteService(userStorage));

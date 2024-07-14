@@ -19,10 +19,8 @@ routerUsers.get('/v1/users/:userId', (req: Request, res: Response, next: NextFun
   return userGetByIdController.handle(req, res, next);
 });
 
-
 routerUsers.delete('/v1/users/:userId', (req: Request, res: Response, next: NextFunction) => {
   return userDeleteController.handle(req, res, next);
-
 });
 
 export { routerUsers };
