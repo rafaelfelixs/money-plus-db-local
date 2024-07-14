@@ -40,11 +40,10 @@ export default class UserCreateHelper {
 
   public static async buildResponse(user: Users): Promise<UserCreateResponse> {
     return {
-      userId: user.userId,
+      userId: user.id,
       userName: user.userName,
       email: user.email,
       createdAt: String(user.createdAt),
-      transactions: user.transactions || [],
     };
   }
 }

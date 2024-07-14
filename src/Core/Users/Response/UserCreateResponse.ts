@@ -6,5 +6,4 @@ export interface UserCreateResponse {
   userName: string;
   email: string;
   createdAt: string;
-  transactions?: Array<Transactions>;
 }
