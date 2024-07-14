@@ -11,7 +11,7 @@ routerTransactions.get('/v1/transactions', (req: Request, res: Response, next: N
   return transactionListController.handle(req, res, next);
 });
 
-routerTransactions.patch('/v1/transactions/:transactionId', (req: Request, res: Response, next: NextFunction) => {
+routerTransactions.patch('/v1/transactions/:transactionId/status', (req: Request, res: Response, next: NextFunction) => {
   return transactionStatusUpdateController.handle(req, res, next);
 });
 
