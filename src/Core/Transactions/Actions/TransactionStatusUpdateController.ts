@@ -6,7 +6,7 @@ export class TransactionStatusUpdateController {
 
   public async handle(req: Request, res: Response, next: NextFunction): Promise<Response> {
     try {
-      const {transactionId} = req.params
+      const { transactionId } = req.params;
       const { status } = req.body;
       await this.service.invoke(transactionId, status);
       res.status(200).send({ message: 'Transaction status updated successfully' });

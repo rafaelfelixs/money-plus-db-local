@@ -13,7 +13,7 @@ export class TransactionCreateService {
 
   public async invoke(transaction: Transactions): Promise<any> {
     // check if the user exists
-    
+
     const userFound = await this.storageUser.findById(transaction.userId);
     if (!userFound) {
       logger.info('User not exists, send a valid user id', transaction.userId);

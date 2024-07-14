@@ -14,11 +14,10 @@ export default class UserListHelper {
       count: users.length,
       items: users.map((user) => {
         return {
-          userId: user.userId,
+          userId: user.id,
           userName: user.userName,
           email: user.email,
           createdAt: String(user.createdAt),
-          transactions: user.transactions || [],
         };
       }),
     };
